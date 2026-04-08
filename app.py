@@ -238,7 +238,7 @@ if st.session_state.modules:
         transfer_prompt = build_transfer_prompt(modules, included_map)
         total_tokens = estimate_tokens(transfer_prompt)
 
-        st.text_area("", value=transfer_prompt, height=250)
+        st.text_area("Transfer Prompt Output", value=transfer_prompt, height=250)
         st.caption(f"{total_tokens} tokens")
 
         st.download_button(
@@ -259,7 +259,7 @@ if st.session_state.modules:
 
         st.subheader("Budget-Aware Prompt")
 
-        st.text_area("", value=compact_prompt, height=200)
+        st.text_area("Budget-Aware Prompt Output", value=compact_prompt, height=200)
         st.caption(f"{compact_tokens} tokens")
 
         # 🔥 MODULAR PACKET
