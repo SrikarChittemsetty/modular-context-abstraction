@@ -33,3 +33,7 @@ streamlit run app.py
 ## Notes
 - Requires OpenAI API key
 - Prototype for modular context management
+
+## Testing
+Run:
+python test_extraction.py
