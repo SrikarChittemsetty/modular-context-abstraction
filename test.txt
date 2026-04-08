@@ -1,0 +1,41 @@
+# Demo input: enterprise AI context management scenario
+
+We’re building an internal AI system for financial research analysts. The goal is to allow analysts to query across multiple sources (earnings reports, internal notes, past analyses) and get fast, context-aware answers.
+
+Right now, analysts lose a lot of time re-establishing context between queries. For example, they may ask about a company’s revenue drivers, then follow up about risks, then about comparable companies. Each time, the system lacks continuity.
+
+We are exploring a context layer that sits between the user and the model. This layer should:
+- store relevant context from previous queries
+- filter out irrelevant or outdated information
+- respect permissions (some notes are private or team-restricted)
+- dynamically assemble context depending on the query
+
+One key decision is to avoid passing raw transcripts into the model. Instead, we want structured representations of context (objectives, constraints, decisions, etc.) that can be selectively included.
+
+Constraints:
+- strict token limits (especially for long research threads)
+- sensitive financial data that cannot be shared across users
+- latency requirements (responses must be fast)
+- context must remain accurate over time as new data arrives
+
+We are also thinking about agent workflows. For example:
+- one agent retrieves relevant documents
+- another summarizes them
+- another constructs the final answer
+
+This makes context management even more important, since each agent needs a different subset of context.
+
+Open questions:
+- how do we decide which context is relevant for a given query?
+- how do we avoid stale or conflicting information?
+- how do we audit what context was used in a response?
+
+User preferences:
+- concise answers
+- clear reasoning steps
+- no hallucinated data
+
+User background:
+- financial analyst
+- works with sensitive internal data
+- often collaborates across teams with different permission levels
