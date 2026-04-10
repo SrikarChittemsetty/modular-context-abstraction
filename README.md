@@ -1,6 +1,13 @@
 # Modular Context Abstraction & Transfer Engine
 
-## Overview
+A system for transforming unstructured text into modular, reusable context for LLM workflows.
+
+## Project Overview
+
+![Project One-Pager](./assets/onepager.png)
+
+[View Full One-Pager (PDF)](./one-pager.pdf)
+
 This project extracts, structures, and assembles AI context into modular components.
 
 It converts unstructured transcripts into:
