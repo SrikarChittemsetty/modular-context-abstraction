@@ -1,6 +1,7 @@
 # Modular Context Abstraction & Transfer Engine
 
-A system for transforming unstructured text into modular, reusable context for LLM workflows.
+A Streamlit prototype for transforming long AI collaboration transcripts into
+modular, reusable context packets for LLM workflows.
 
 ## Project Overview
 
@@ -8,39 +9,71 @@ A system for transforming unstructured text into modular, reusable context for L
 
 [View Full One-Pager (PDF)](./one-pager.pdf)
 
-This project extracts, structures, and assembles AI context into modular components.
+The tool extracts important working context into modules, labels each module by
+privacy level, estimates token cost, and assembles transfer prompts that fit a
+target budget.
+
+## Why This Project Matters
+
+Long AI-assisted projects often fail at handoff time: the useful context is
+buried across a full chat transcript, mixed with private details, stale
+branches, and low-value chatter. This project explores a more explicit context
+layer.
 
 It converts unstructured transcripts into:
-- structured modules (objective, decisions, constraints, etc.)
-- configurable context packets
-- transfer prompts under constraints (token, privacy, relevance)
 
----
+- Current objective
+- Task/project state
+- Key decisions
+- Constraints
+- Instructions and preferences
+- Identity/background context that can be excluded by default
 
-## How to Run
+## Features
 
-### 1. Install dependencies
+- Paste or upload a `.txt` / `.md` transcript.
+- Extract structured context modules with the OpenAI API.
+- Estimate token cost for each module.
+- Mark modules as shareable, replaceable, or private.
+- Assemble a transfer prompt manually or with automatic budget-aware selection.
+- Download the final prompt for use in another AI session.
+
+## Tech Stack
+
+- Python
+- Streamlit
+- OpenAI API
+- `tiktoken` for token estimation
+
+## Quick Start
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
+cp .env.example .env
+```
 
-### 2. Add API key
-Create a `.env` file:
+Add your API key:
 
+```bash
 OPENAI_API_KEY=your_api_key_here
+```
 
-### 3. Run the app
+Run the app:
+
+```bash
 streamlit run app.py
-
-### 4. Use the app
-- Upload or paste a transcript
-- Click "Extract Modules"
-- View structured modules and generated prompts
-
----
-
-## Notes
-- Requires OpenAI API key
-- Prototype for modular context management
+```
 
 ## Testing
-Run:
+
+```bash
 python test_extraction.py
+```
+
+## Status
+
+Prototype. The core extraction and prompt assembly loop is working, but this is
+intended as an exploration of context engineering rather than a production SaaS
+app.
